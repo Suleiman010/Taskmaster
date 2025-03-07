@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { MdAdd, MdDelete } from "react-icons/md";
 import { generateId } from "../utility/util";
 import TodoItem from "../components/Todorelated/TodoItem";
 import AddTodos from "../components/Todorelated/addTodos";
@@ -20,17 +19,17 @@ function Todo() {
           // Make sure savedTasks is an array before setting state
           if (Array.isArray(savedTasks)) {
             setTodos(savedTasks);
-            console.log("Loaded tasks:", savedTasks);
+            //console.log("Loaded tasks:", savedTasks);
           } else {
             console.error("Saved tasks is not an array:", savedTasks);
             setTodos([]);
           }
         } else {
-          console.log("No tasks found in localStorage");
+          //console.log("No tasks found in localStorage");
           setTodos([]);
         }
       } catch (error) {
-        console.error("Error loading tasks from localStorage:", error);
+        //console.error("Error loading tasks from localStorage:", error);
         setTodos([]);
       } finally {
         setIsLoading(false);
@@ -47,9 +46,9 @@ function Todo() {
     if (!isLoading) {
       try {
         localStorage.setItem("todos", JSON.stringify(todos));
-        console.log("Saved tasks to localStorage:", todos);
+        //console.log("Saved tasks to localStorage:", todos);
       } catch (error) {
-        console.error("Error saving tasks to localStorage:", todos);
+        //console.error("Error saving tasks to localStorage:", todos);
       }
     }
   }, [todos, isLoading]);
